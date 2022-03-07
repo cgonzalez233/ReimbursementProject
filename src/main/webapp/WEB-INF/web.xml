@@ -6,64 +6,64 @@
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
     <servlet-name>servletCRE</servlet-name>
-    <servlet-class>ServletCRE</servlet-class>
+    <servlet-class>UserServlets.ServletCRE</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>servletCRE</servlet-name>
-    <url-pattern>/ServletCRE</url-pattern>
+    <url-pattern>/UserServlets.ServletCRE</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>servletVRE</servlet-name>
-    <servlet-class>ServletVRE</servlet-class>
+    <servlet-class>UserServlets.ServletVRE</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>servletVRE</servlet-name>
-    <url-pattern>/ServletVRE</url-pattern>
+    <url-pattern>/UserServlets.ServletVRE</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>servletELN</servlet-name>
-    <servlet-class>ServletELN</servlet-class>
+    <servlet-class>UserServlets.ServletELN</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>servletELN</servlet-name>
-    <url-pattern>/ServletELN</url-pattern>
+    <url-pattern>/UserServlets.ServletELN</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>servletUPE</servlet-name>
-    <servlet-class>ServletUPE</servlet-class>
+    <servlet-class>UserServlets.ServletUPE</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>servletUPE</servlet-name>
-    <url-pattern>/ServletUPE</url-pattern>
+    <url-pattern>/UserServlets.ServletUPE</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>servletELO</servlet-name>
-    <servlet-class>ServletELO</servlet-class>
+    <servlet-class>UserServlets.ServletELO</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>servletELO</servlet-name>
-    <url-pattern>/ServletELO</url-pattern>
+    <url-pattern>/UserServlets.ServletELO</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>servletVEI</servlet-name>
-    <servlet-class>ServletVEI</servlet-class>
+    <servlet-class>UserServlets.ServletVEI</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>servletVEI</servlet-name>
-    <url-pattern>/ServletVEI</url-pattern>
+    <url-pattern>/UserServlets.ServletVEI</url-pattern>
   </servlet-mapping>
 
   <servlet>
-    <servlet-name>MLoginServlet</servlet-name>
-    <servlet-class>MLoginServlet</servlet-class>
+    <servlet-name>ManagementServlets.MLoginServlet</servlet-name>
+    <servlet-class>ManagementServlets.MLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MLoginServlet</servlet-name>
-    <url-pattern>/MLoginServlet</url-pattern>
+    <servlet-name>ManagementServlets.MLoginServlet</servlet-name>
+    <url-pattern>/ManagementServlets.MLoginServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>
