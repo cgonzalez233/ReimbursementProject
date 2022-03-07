@@ -39,9 +39,7 @@ public class User {
     public String getPassword(){return password;}
     public void setPassword(String password){this.password = password;}
 
-    public boolean isType() {
-        return type;
-    }
+    public boolean isType() {return type;}
 
     public void setType(boolean type) {
         this.type = type;

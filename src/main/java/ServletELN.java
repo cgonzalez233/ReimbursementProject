@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ServletELN extends HttpServlet {
-    UserDao userdao = UserDaoFactory.getUserDao();
+    UserDao userDao = new UserDaoImplementation()
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
