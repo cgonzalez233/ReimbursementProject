@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,10 +15,10 @@ public class User {
     private String username;
     @Column(unique = true)
     private String password;
-    private String type;
+    private boolean type;
 
     public User(){}
-    public User(String name, String email, String username, String password, String type){
+    public User(String name, String email, String username, String password, boolean type){
         this.name = name;
         this.email = email;
         this.username = username;
@@ -39,6 +40,6 @@ public class User {
     public String getPassword(){return password;}
     public void setPassword(String password){this.password = password;}
 
-    public String getType(){return type;}
-    public void setType(String type){this.type = type;}
+    public boolean getType(){return type;}
+    public void setType(boolean type){this.type = type;}
 }

@@ -27,14 +27,19 @@ public class ServletCRE extends HttpServlet {
         double amount = Double.parseDouble(request.getParameter("_amount"));
         reimbursement.setAmount(amount);
         reimbursement.setRequester(currentUser);
-        String supportingdoc = "jimmy";
+        String supportingdoc = "src/main/submitedDocuments";
         reimbursement.setSupportingDocuments(supportingdoc);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         LocalDateTime now = LocalDateTime.now();
         reimbursement.setDate(dtf.format(now));
+
+        //getFile->Save to local device->savePath to doc->send path to db
         byte[] filebites = request.getParameter("_document").getBytes(StandardCharsets.UTF_8);
-        File file = new File("ReimbursementProject/src/main/submitedDocuments/");
-        FileUtils.writeByteArrayToFile(file,filebites);
+        File file = new File("src/main/submitedDocuments/mypic.jpg");
+        try {
+            FileUtils.writeByteArrayToFile(file, filebites);
+        }catch (IOException e){}
+
         //Push to database
         userdao.createReimbursement(reimbursement);
         request.getRequestDispatcher("navbar.html").include(request, response);

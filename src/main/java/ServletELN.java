@@ -16,13 +16,14 @@ public class ServletELN extends HttpServlet {
         employee.setUsername(request.getParameter("_username"));
         employee.setPassword(request.getParameter("_password"));
         employee = userdao.Login(employee.getUsername(), employee.getPassword());
+        employee.setType(Boolean.parseBoolean(request.getParameter("_type")));
         if (employee.getName()==null){
             out.println("<p style=\"color: red\">Bad Credentials</p>");
             request.getRequestDispatcher("index.html").include(request, response);
         }else {
             HttpSession session = request.getSession(true);
             session.setAttribute("_susername",employee.getUsername());
-            if(employee.getType().equals("employee"))
+            if(employee.getType())
                 request.getRequestDispatcher("navbar.html").forward(request, response);
             else{
                 out.println("<h1>Welcome Manager</h1>");
