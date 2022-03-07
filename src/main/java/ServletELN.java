@@ -23,7 +23,7 @@ public class ServletELN extends HttpServlet {
         }else {
             HttpSession session = request.getSession(true);
             session.setAttribute("_susername",employee.getUsername());
-            if(employee.getType())
+            if(employee.isType())
                 request.getRequestDispatcher("navbar.html").forward(request, response);
             else{
                 out.println("<h1>Welcome Manager</h1>");
