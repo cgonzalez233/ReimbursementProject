@@ -69,7 +69,7 @@ public class UserDaoImplementation implements UserDao{
         foundUser.setEmail(users.get(0).getEmail());
         foundUser.setUsername(username);
         foundUser.setPassword(users.get(0).getPassword());
-        foundUser.setType(users.get(0).getType());
+        foundUser.setType(users.get(0).isType());
 
         return foundUser;
     }
@@ -96,7 +96,7 @@ public class UserDaoImplementation implements UserDao{
             foundUser.setEmail(users.get(0).getEmail());
             foundUser.setUsername(username);
             foundUser.setPassword(password);
-            foundUser.setType(users.get(0).getType());
+            foundUser.setType(users.get(0).isType());
         }catch (Exception e){
             System.out.println("Bad Credentials");
         }

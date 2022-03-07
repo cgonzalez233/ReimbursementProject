@@ -57,4 +57,13 @@
     <url-pattern>/ServletVEI</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>MLoginServlet</servlet-name>
+    <servlet-class>MLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MLoginServlet</servlet-name>
+    <url-pattern>/MLoginServlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>
