@@ -32,9 +32,17 @@ public class MLoginServlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("_susername",manager.getUsername());
 
-            request.getRequestDispatcher("navbar.html").include(request, response);
+            request.getRequestDispatcher("managerNav.html").include(request, response);
             out.println("<h1>Welcome "+ manager.getName() +"</h1>");
-            request.getRequestDispatcher("managerPage.html").include(request, response);
+            out.println("<div>\n" +
+                    "  <ul>\n" +
+                    "    <li><a href=\"ManagementServlets.PendingServlet\">View All Pending Requests</a></li>\n" +
+                    "    <li><a href=\"ManagementServlets.ResolvedServlet\">View All Resolved Requests</a></li>\n" +
+                    "    <li><a href=\"chooseEmp.html\">View An Employees Requests</a></li>\n" +
+                    "    <li><a href=\"ManagementServlets.AllEmpServlet\">View All Employees</a></li>\n" +
+                    "    <li><a href=\"ManagementServlets.NewEmpServlet\">Add New Employee</a></li>\n" +
+                    "  </ul>\n" +
+                    "</div>");
         }
     }
 

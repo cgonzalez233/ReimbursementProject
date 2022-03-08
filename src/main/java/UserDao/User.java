@@ -14,9 +14,9 @@ public class User {
     private String email;
     @Column(unique = true)
     private String username;
-    @Column(unique = true)
     private String password;
     private boolean type;
+
 
     public User(){}
     public User(String name, String email, String username, String password, boolean type){

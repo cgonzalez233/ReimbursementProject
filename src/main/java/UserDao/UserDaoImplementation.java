@@ -28,7 +28,7 @@ public class UserDaoImplementation implements UserDao{
     }
 
     @Override
-    public List<Reimbursement> getReimbursement(String user) {
+    public List<Reimbursement> getReimbursement(String name) {
         // create a configuration object
         org.hibernate.cfg.Configuration config = new Configuration();
         // read the Configuration and load in the object
@@ -40,7 +40,7 @@ public class UserDaoImplementation implements UserDao{
         // begin transaction
         Transaction t = session.beginTransaction() ;
         // Perform Query
-        List<Reimbursement> reimbursements = session.createQuery("from UserDao.Reimbursement where requester = \"" + user + "\"" , Reimbursement.class).list();
+        List<Reimbursement> reimbursements = session.createQuery("from UserDao.Reimbursement where requester = \"" + name + "\"" , Reimbursement.class).list();
         t.commit();
 
 

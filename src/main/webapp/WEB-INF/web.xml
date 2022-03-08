@@ -66,4 +66,31 @@
     <url-pattern>/ManagementServlets.MLoginServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ManagementServlets.AllEmpServlet</servlet-name>
+    <servlet-class>ManagementServlets.AllEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagementServlets.AllEmpServlet</servlet-name>
+    <url-pattern>/ManagementServlets.AllEmpServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ManagementServlets.EmpReqServlet</servlet-name>
+    <servlet-class>ManagementServlets.EmpReqServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagementServlets.EmpReqServlet</servlet-name>
+    <url-pattern>/ManagementServlets.EmpReqServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ManagementServlets.StatusServlet</servlet-name>
+    <servlet-class>ManagementServlets.StatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagementServlets.StatusServlet</servlet-name>
+    <url-pattern>/ManagementServlets.StatusServlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>
