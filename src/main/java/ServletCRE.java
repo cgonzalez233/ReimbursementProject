@@ -42,6 +42,10 @@ public class ServletCRE extends HttpServlet {
         }catch (IOException e){}
 
         //Push to database
+        if(reimbursement.getRequester().equals("")){
+            out.println("<p>Please login first</p>");
+        }
+
         userdao.createReimbursement(reimbursement);
         request.getRequestDispatcher("navbar.html").include(request, response);
         out.println("<h3>Request Submitted</h3>");

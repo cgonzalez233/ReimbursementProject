@@ -43,8 +43,6 @@ public class UserDaoImplementation implements UserDao{
         List<Reimbursement> reimbursements = session.createQuery("from Reimbursement where requester = \"" + user + "\"" ,Reimbursement.class).list();
         t.commit();
 
-
-
         return reimbursements;
     }
 
@@ -116,7 +114,7 @@ public class UserDaoImplementation implements UserDao{
         // ope the session
         Session session = factory.openSession();
         // begin transaction
-        Transaction t = session.beginTransaction() ;
+        Transaction t = session.beginTransaction();
         // create query
         String QHQL = "UPDATE User set name=\""+user.getName()+"\", email=\"" +user.getEmail()+
                 "\", username=\"" +user.getUsername()+"\", password=\"" +user.getPassword()+"\" Where id=\"" + user.getId()+"\"";
@@ -127,6 +125,5 @@ public class UserDaoImplementation implements UserDao{
         // commit
         t.commit();
     }
-
 
 }

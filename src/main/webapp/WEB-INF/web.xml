@@ -66,4 +66,25 @@
     <url-pattern>/MLoginServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>pendingServlet</servlet-name>
+    <servlet-class>PendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>pendingServlet</servlet-name>
+    <url-pattern>/PendingServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>resolvedServlet</servlet-name>
+    <servlet-class>ResolvedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>resolvedServlet</servlet-name>
+    <url-pattern>/ResolvedServlet</url-pattern>
+  </servlet-mapping>
+
+
+
+
 </web-app>

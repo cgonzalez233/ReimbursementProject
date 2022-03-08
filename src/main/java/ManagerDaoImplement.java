@@ -50,12 +50,40 @@ public class ManagerDaoImplement implements IManagerDao{
 
     @Override
     public List<Reimbursement> allPending() {
-        return null;
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // open the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction() ;
+        // Perform Query
+        List<Reimbursement> reimbursements = session.createQuery("from Reimbursement where status = \"Pending\"" ,Reimbursement.class).list();
+        t.commit();
+
+        return reimbursements;
     }
 
     @Override
     public List<Reimbursement> allResolved() {
-        return null;
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // open the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction() ;
+        // Perform Query
+        List<Reimbursement> reimbursements = session.createQuery("from Reimbursement where status != \"Pending\"" ,Reimbursement.class).list();
+        t.commit();
+
+        return reimbursements;
     }
 
     @Override

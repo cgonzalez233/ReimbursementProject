@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ServletELN extends HttpServlet {
-    UserDao userDao = new UserDaoImplementation()
+    UserDao userdao = UserDaoFactory.getUserDao();
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -23,7 +23,7 @@ public class ServletELN extends HttpServlet {
         }else {
             HttpSession session = request.getSession(true);
             session.setAttribute("_susername",employee.getUsername());
-            if(employee.isType())
+            if(!employee.isType())
                 request.getRequestDispatcher("navbar.html").forward(request, response);
             else{
                 out.println("<h1>Welcome Manager</h1>");

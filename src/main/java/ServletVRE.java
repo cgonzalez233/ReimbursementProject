@@ -16,6 +16,7 @@ public class ServletVRE extends HttpServlet {
         HttpSession session = request.getSession(false);
         String currentUser = (String)session.getAttribute("_susername");
         request.getRequestDispatcher("navbar.html").include(request, response);
+        String document ="https://www.shutterstock.com/search/catfish";
         out.println("<table><tr><th>RequestID | </th>"+
                 "<th>Date | </th><th>Reason | </th>"+
                 "<th>Amount | </th><th>Document | </th><th>Status</th></tr>");
@@ -25,7 +26,7 @@ public class ServletVRE extends HttpServlet {
                     re.getDate() + "</td><td>"
                     + re.getReason() + "</td><td>"
                     + re.getAmount() + "</td><td><a href=\""
-                    + re.getSupportingDocuments() + "\">Image</a></td><td>"
+                    + /*re.getSupportingDocuments()*/document + "\" target=\"_blank\">Image</a></td><td>"
                     + re.getStatus() + "</td></tr>"
             );
         }
