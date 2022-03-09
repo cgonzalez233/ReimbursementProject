@@ -1,7 +1,5 @@
 package ManagementServlets;
 
-import ManagementDao.IManagerDao;
-import ManagementDao.ManagerDaoFactory;
 import UserDao.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -12,10 +10,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 
 public class EmpReqServlet extends HttpServlet {
@@ -46,15 +42,12 @@ public class EmpReqServlet extends HttpServlet {
         Transaction t = session.beginTransaction();
 
         UserDao userdao = UserDaoFactory.getUserDao();
-        IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
         List<Reimbursement> reqList = userdao.getReimbursement(name);
 
         System.out.println(reqList.size());
 
-        Iterator itr = reqList.iterator();
-        while (itr.hasNext()) {
+        for (Reimbursement req : reqList) {
 
-            Reimbursement req = (Reimbursement) itr.next();
             out.println("<tr><td>" + req.getId() + "</td>");
             out.println("<td>" + req.getAmount() + "</td>");
             out.println("<td>" + req.getDate() + "</td>");
@@ -69,7 +62,6 @@ public class EmpReqServlet extends HttpServlet {
 
         out.println("</table></div>");
         t.commit();
-        session.close();
 
 
     }

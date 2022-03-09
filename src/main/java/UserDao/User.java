@@ -1,25 +1,23 @@
 package UserDao;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_seq")
+    @SequenceGenerator(name = "project_seq", sequenceName = "project_seq", allocationSize = 1)
     private int id;
     private String name;
     private String email;
     @Column(unique = true)
     private String username;
     private String password;
-    private boolean type;
+    private int type;
 
 
     public User(){}
-    public User(String name, String email, String username, String password, boolean type){
+    public User(String name, String email, String username, String password, int type){
         this.name = name;
         this.email = email;
         this.username = username;
@@ -41,11 +39,11 @@ public class User {
     public String getPassword(){return password;}
     public void setPassword(String password){this.password = password;}
 
-    public boolean isType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(boolean type) {
+    public void setType(int type) {
         this.type = type;
     }
 

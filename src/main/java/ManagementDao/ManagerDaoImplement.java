@@ -29,7 +29,7 @@ public class ManagerDaoImplement implements IManagerDao{
 
         t.commit();
 
-        if((currentUser.isType())){
+        if((currentUser.getType() == 1)){
             return currentUser;
         }
 

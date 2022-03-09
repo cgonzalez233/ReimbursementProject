@@ -93,4 +93,31 @@
     <url-pattern>/ManagementServlets.StatusServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ManagementServlets.NewEmpServlet</servlet-name>
+    <servlet-class>ManagementServlets.NewEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagementServlets.NewEmpServlet</servlet-name>
+    <url-pattern>/ManagementServlets.NewEmpServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ManagementServlets.PendingServlet</servlet-name>
+    <servlet-class>ManagementServlets.PendingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagementServlets.PendingServlet</servlet-name>
+    <url-pattern>/ManagementServlets.PendingServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ManagementServlets.ResolvedServlet</servlet-name>
+    <servlet-class>ManagementServlets.ResolvedServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagementServlets.ResolvedServlet</servlet-name>
+    <url-pattern>/ManagementServlets.ResolvedServlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>

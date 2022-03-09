@@ -6,15 +6,15 @@ import java.util.List;
 
 public interface IManagerDao {
 
-    public User mLogin(String username, String pass);
+    User mLogin(String username, String pass);
 
-    public void mLogout();
+    void mLogout();
 
-    public void approve(int id);
-    public void deny(int id);
-    public List<Reimbursement> allPending();
-    public List<Reimbursement> allResolved();
-    public Reimbursement getByEmp(User user);
-    public List<User> allEmp();
+    void approve(int id);
+    void deny(int id);
+    List<Reimbursement> allPending();
+    List<Reimbursement> allResolved();
+    Reimbursement getByEmp(User user);
+    List<User> allEmp();
 
 }
