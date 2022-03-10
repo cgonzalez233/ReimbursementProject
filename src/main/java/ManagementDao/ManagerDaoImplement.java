@@ -120,4 +120,16 @@ public class ManagerDaoImplement implements IManagerDao{
         // commit
         t.commit();
     }
+
+    @Override
+    public void createUser(User user) {
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        config.configure("hibernate.cfg.xml");
+        SessionFactory factory = config.buildSessionFactory();
+        Session session = factory.openSession();
+        Transaction t = session.beginTransaction() ;
+        session.persist(user);
+        t.commit();
+    }
 }

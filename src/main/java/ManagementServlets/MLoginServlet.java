@@ -40,7 +40,7 @@ public class MLoginServlet extends HttpServlet {
                     "    <li><a href=\"ManagementServlets.ResolvedServlet\">View All Resolved Requests</a></li>\n" +
                     "    <li><a href=\"chooseEmp.html\">View An Employees Requests</a></li>\n" +
                     "    <li><a href=\"ManagementServlets.AllEmpServlet\">View All Employees</a></li>\n" +
-                    "    <li><a href=\"ManagementServlets.NewEmpServlet\">Add New Employee</a></li>\n" +
+                    "    <li><a href=\"newEmployee.html\">Add New Employee</a></li>\n" +
                     "  </ul>\n" +
                     "</div>");
         }

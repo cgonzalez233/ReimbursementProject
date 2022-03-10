@@ -18,7 +18,7 @@ public class PendingServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        request.getRequestDispatcher("navbar.html").include(request, response);
+        request.getRequestDispatcher("managerNav.html").include(request, response);
         out.println("<table><tr><th>RequestID | </th>"+
                 "<th>Requester | </th>"+
                 "<th>Date | </th><th>Reason | </th>"+
