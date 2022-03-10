@@ -27,6 +27,8 @@ public class NewEmpServlet extends HttpServlet {
 
         mdao.createUser(newUser);
         out.println("<p>User "+ newUser.getName() +"has been added to the system</p>");
-        request.getRequestDispatcher("managerNav.html").include(request, response);
+
+        request.getRequestDispatcher("ManagementServlets.MLoginServlet").include(request, response);
+
     }
 }

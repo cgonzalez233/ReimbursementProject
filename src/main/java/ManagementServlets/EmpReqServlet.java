@@ -41,6 +41,7 @@ public static int[] idList = new int[40];
                 "            <th>Reason</th>\n" +
                 "            <th>Requester</th>\n" +
                 "            <th>Status</th>\n" +
+                "            <th>Actions</th>\n" +
                 "        </tr>\n");
 
         Configuration config = new Configuration();
