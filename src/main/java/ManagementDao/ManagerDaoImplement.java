@@ -23,8 +23,12 @@ public class ManagerDaoImplement implements IManagerDao{
         // begin transaction
         Transaction t = session.beginTransaction() ;
         // Perform Query
-        User currentUser = session.createQuery("from UserDao.User where username = \"" + username + "\" AND password = \""+pass + "\"", User.class).getSingleResult();
-
+        User currentUser = new User();
+        try {
+            currentUser = session.createQuery("from UserDao.User where username = \"" + username + "\" AND password = \"" + pass + "\"", User.class).getSingleResult();
+        }catch (Exception e){
+            currentUser.setName("badcreds");
+        }
         System.out.println(currentUser);
 
         t.commit();

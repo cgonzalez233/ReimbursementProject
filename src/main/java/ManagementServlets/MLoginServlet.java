@@ -25,7 +25,7 @@ public class MLoginServlet extends HttpServlet {
 
         manager = managerDao.mLogin(uname, pass);
 
-        if (manager == null){
+        if (manager == null || manager.getName().equals("badcreds")){
             out.println("<p style=\"color: red\">You're Not a Manager</p>");
             request.getRequestDispatcher("index.html").include(request, response);
         }else {
