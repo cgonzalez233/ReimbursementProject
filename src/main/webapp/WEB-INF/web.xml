@@ -95,20 +95,20 @@
 
   <servlet>
     <servlet-name>pendingServlet</servlet-name>
-    <servlet-class>PendingServlet</servlet-class>
+    <servlet-class>ManagementServlets.PendingServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>pendingServlet</servlet-name>
-    <url-pattern>/PendingServlet</url-pattern>
+    <url-pattern>/ManagementServlets.PendingServlet</url-pattern>
   </servlet-mapping>
 
   <servlet>
     <servlet-name>resolvedServlet</servlet-name>
-    <servlet-class>ResolvedServlet</servlet-class>
+    <servlet-class>ManagementServlets.ResolvedServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>resolvedServlet</servlet-name>
-    <url-pattern>/ResolvedServlet</url-pattern>
+    <url-pattern>/ManagementServlets.ResolvedServlet</url-pattern>
   </servlet-mapping>
 
 

@@ -98,4 +98,26 @@ public class ManagerDaoImplement implements IManagerDao{
     public List<User> allEmp() {
         return null;
     }
+
+    @Override
+    public void updateRequest(String newStatus, int id) {
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // ope the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction();
+        // create query
+        String QHQL = "UPDATE UserDao.Reimbursement set status=\""+newStatus+"\" Where id=\"" + id +"\"";
+
+        //create query
+        session.createMutationQuery(QHQL).executeUpdate();
+
+        // commit
+        t.commit();
+    }
 }

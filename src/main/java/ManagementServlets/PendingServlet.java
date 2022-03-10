@@ -1,3 +1,8 @@
+package ManagementServlets;
+
+import ManagementDao.IManagerDao;
+import ManagementDao.ManagerDaoFactory;
+import UserDao.Reimbursement;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

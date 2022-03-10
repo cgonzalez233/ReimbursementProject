@@ -1,3 +1,8 @@
+package UserServlets;
+
+import UserDao.User;
+import UserDao.UserDao;
+import UserDao.UserDaoFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

@@ -19,7 +19,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class EmpReqServlet extends HttpServlet {
-
+public static int i;
+public static int[] idList = new int[40];
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         response.setContentType("text/html");
@@ -28,6 +29,9 @@ public class EmpReqServlet extends HttpServlet {
         request.getRequestDispatcher("managerNav.html").include(request, response);
 
         String name = request.getParameter("empName");
+
+        out.println("<form action =\"ManagementServlets.StatusServlet\" method=\"post\">");
+        out.println("<input type=\"hidden\" name=\"_name\" value=\""+name+"\">");
 
         out.println("<div><h3>"+ name +"</h3><table border=1px>\n" +
                 "        <tr>\n" +
@@ -49,25 +53,30 @@ public class EmpReqServlet extends HttpServlet {
         IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
         List<Reimbursement> reqList = userdao.getReimbursement(name);
 
-        System.out.println(reqList.size());
-
-        Iterator itr = reqList.iterator();
-        while (itr.hasNext()) {
-
-            Reimbursement req = (Reimbursement) itr.next();
+          System.out.println(reqList.size());
+//        Iterator itr = reqList.iterator();
+        i = 0;
+        int[] idli = new int[40];
+        String stringI = "";
+        for (Reimbursement req: reqList) {
+           // Reimbursement req = (Reimbursement) itr.next();
             out.println("<tr><td>" + req.getId() + "</td>");
             out.println("<td>" + req.getAmount() + "</td>");
             out.println("<td>" + req.getDate() + "</td>");
             out.println("<td>" + req.getReason() + "</td>");
             out.println("<td>" + req.getRequester() + "</td>");
             out.println("<td>" + req.getStatus() + "</td>");
-            out.println("<td><form action=\"ManagementServlets.StatusServlet?a=" + req.getId() + "\" method=\"post\">" +
-                    "    <input type=\"submit\" name=\"button1\" value=\"Approve\" />" +
-                    "    <input type=\"submit\" name=\"button2\" value=\"Deny\" /></form></td>");
-
+            stringI = Integer.toString(i);
+            out.println("<td>" +
+                    "    Approve<input type=\"radio\" name=\"approveDeny"+stringI+"\" value=\"Approve\">" +
+                    "    Deny<input type=\"radio\" name=\"approveDeny" +stringI+"\" value=\"Deny\"></td></tr>");
+//            idList[i] = req.getId();
+            idli[i] = req.getId();
+            i++;
         }
+        idList = idli;
+        out.println("</table><input type=\"submit\" value = \"submit\"></form></div>");
 
-        out.println("</table></div>");
         t.commit();
         session.close();
 

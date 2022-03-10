@@ -16,5 +16,6 @@ public interface IManagerDao {
     public List<Reimbursement> allResolved();
     public Reimbursement getByEmp(User user);
     public List<User> allEmp();
+    public void updateRequest(String newStatus, int id);
 
 }
