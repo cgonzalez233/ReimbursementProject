@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class NewEmpServlet extends HttpServlet {
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         User newUser = new User();
@@ -26,9 +26,10 @@ public class NewEmpServlet extends HttpServlet {
         IManagerDao mdao = ManagerDaoFactory.getManagerDao();
 
         mdao.createUser(newUser);
+        request.getRequestDispatcher("managerNav.html").include(request, response);
         out.println("<p>User "+ newUser.getName() +"has been added to the system</p>");
 
-        request.getRequestDispatcher("ManagementServlets.MLoginServlet").include(request, response);
+
 
     }
 }
