@@ -21,18 +21,21 @@ public class EmpReqServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         request.getRequestDispatcher("managerNav.html").include(request, response);
 
         String name = request.getParameter("empName");
 
-        out.println("<div><h3>"+ name +"</h3><table border=1px>\n" +
-                "        <tr>\n" +
+        out.println("<div class=\"tableDiv\"><h3>"+ name +"</h3><table border=1px>\n" +
+                "        <tr class=\"tableHead\">\n" +
                 "            <th>Id</th>\n" +
                 "            <th>Amount</th>\n" +
                 "            <th>Date</th>\n" +
                 "            <th>Reason</th>\n" +
                 "            <th>Requester</th>\n" +
                 "            <th>Status</th>\n" +
+                "            <th>Approve/Deny</th>\n" +
                 "        </tr>\n");
 
         Configuration config = new Configuration();
@@ -54,9 +57,12 @@ public class EmpReqServlet extends HttpServlet {
             out.println("<td>" + req.getReason() + "</td>");
             out.println("<td>" + req.getRequester() + "</td>");
             out.println("<td>" + req.getStatus() + "</td>");
-            out.println("<td><form action=\"ManagementServlets.StatusServlet?a=" + req.getId() + "\" method=\"post\">" +
-                    "    <input type=\"submit\" name=\"button1\" value=\"Approve\" />" +
-                    "    <input type=\"submit\" name=\"button2\" value=\"Deny\" /></form></td>");
+            if(req.getStatus().equals("")){
+                out.println("<td><form action=\"ManagementServlets.StatusServlet?a=" + req.getId() + "\" method=\"post\">");
+                out.println("    <input type=\"submit\" name=\"button1\" value=\"Approve\" />" +
+                        "    <input type=\"submit\" name=\"button2\" value=\"Deny\" /></form></td>");
+            }
+
 
         }
 

@@ -20,6 +20,8 @@ public class NewEmpServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         request.getRequestDispatcher("managerNav.html").include(request, response);
 
         String name = request.getParameter("name");

@@ -14,6 +14,9 @@ public class ServletELO extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
+
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         session.setAttribute("_susername", "");
         out.println("<p>You have successfully logged out of the system</p>");
         request.getRequestDispatcher("index.html").include(request, response);

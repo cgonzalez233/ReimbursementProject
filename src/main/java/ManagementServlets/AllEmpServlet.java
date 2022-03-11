@@ -21,6 +21,8 @@ public class AllEmpServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         request.getRequestDispatcher("managerNav.html").include(request, response);
 
         out.println("<div><table border=1px>\n" +

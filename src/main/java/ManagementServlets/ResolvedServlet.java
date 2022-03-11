@@ -21,16 +21,19 @@ public class ResolvedServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         request.getRequestDispatcher("managerNav.html").include(request, response);
 
-        out.println("<div><h3>Pending Employees</h3><table border=1px>\n" +
-                "        <tr>\n" +
+        out.println("<div class=\"tableDiv\"><h3>Resolved Reimbursements</h3><table border=1px>\n" +
+                "        <tr class=\"tableHead\">\n" +
                 "            <th>Id</th>\n" +
                 "            <th>Amount</th>\n" +
                 "            <th>Date</th>\n" +
                 "            <th>Reason</th>\n" +
                 "            <th>Requester</th>\n" +
                 "            <th>Status</th>\n" +
+                "            <th>Approve/Deny</th>\n" +
                 "        </tr>\n");
 
         Configuration config = new Configuration();
@@ -47,7 +50,7 @@ public class ResolvedServlet extends HttpServlet {
         for (Reimbursement req : reqList) {
             System.out.println(req.getStatus());
 
-            if (req.getStatus().equals("resolved")) {
+            if (!req.getStatus().equals("")) {
                 System.out.println("Hello from if");
                 out.println("<tr><td>" + req.getId() + "</td>");
                 out.println("<td>" + req.getAmount() + "</td>");

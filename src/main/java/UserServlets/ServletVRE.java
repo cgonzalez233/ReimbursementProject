@@ -18,12 +18,16 @@ public class ServletVRE extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
+
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         String currentUser = (String)session.getAttribute("_susername");
         request.getRequestDispatcher("navbar.html").include(request, response);
         out.println("<table><tr><th>RequestID | </th>"+
                 "<th>Date | </th><th>Reason | </th>"+
                 "<th>Amount | </th><th>Document | </th><th>Status</th></tr>");
         List<Reimbursement> reimbursements = userdao.getReimbursement(currentUser);
+
         for (Reimbursement re: reimbursements) {
             out.println("<tr><td>"+re.getId()+"</td><td>"+
                     re.getDate() + "</td><td>"

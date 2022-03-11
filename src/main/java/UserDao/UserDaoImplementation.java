@@ -49,6 +49,26 @@ public class UserDaoImplementation implements UserDao{
     }
 
     @Override
+    public Reimbursement getReimbursementById(int id) {
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // open the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction() ;
+        // Perform Query
+        Reimbursement reimbursement = session.createQuery("from UserDao.Reimbursement where id = \"" + id + "\"" , Reimbursement.class).getSingleResult();
+
+        t.commit();
+
+        return reimbursement;
+    }
+
+    @Override
     public List<Reimbursement> getAllReimbursement() {
         // create a configuration object
         org.hibernate.cfg.Configuration config = new Configuration();

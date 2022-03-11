@@ -17,6 +17,9 @@ public class ServletUPE extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out  = response.getWriter();
         HttpSession session = request.getSession(false);
+
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         String currentUser = (String)session.getAttribute("_susername");
         User currentinfo = userdao.viewProfile(currentUser);
         String oldSession = currentinfo.getUsername();

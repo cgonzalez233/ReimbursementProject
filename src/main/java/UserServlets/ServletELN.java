@@ -15,6 +15,9 @@ public class ServletELN extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         User employee = new User();
         employee.setUsername(request.getParameter("_username"));
         employee.setPassword(request.getParameter("_password"));

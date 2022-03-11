@@ -16,6 +16,9 @@ public class ServletVEI extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(false);
+
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
         String sessionId = (String)session.getAttribute("_susername");
         User user = userdao.viewProfile(sessionId);
         out.println("<div><p>name: " + user.getName()+ "</p>" +
