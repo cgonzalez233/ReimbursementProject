@@ -1,15 +1,14 @@
 package UserDao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Reimbursement {
 
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "project_seq")
+    @SequenceGenerator(name = "project_seq", sequenceName = "project_seq", allocationSize = 1)
     private int id;
     private String requester;
     private String date;

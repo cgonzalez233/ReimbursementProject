@@ -16,14 +16,22 @@ public class StatusServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        IManagerDao mdao = ManagerDaoFactory.getManagerDao();
-        String stringI = "";
-        for (int comb = 0; comb != EmpReqServlet.i; comb++){
-            stringI = Integer.toString(comb);
-            mdao.updateRequest(request.getParameter("approveDeny"+stringI),EmpReqServlet.idList[comb]);
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
+
+        IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
+
+        String reqStr = request.getParameter("a");
+        int reqId = Integer.parseInt(reqStr);
+
+        if (request.getParameter("button1") != null) {
+            managerdao.approve(reqId);
+            request.getRequestDispatcher("managerPage.html").include(request, response);
+            out.println("<h3>Request Approved</h3>");
+        } else if (request.getParameter("button2") != null){
+            managerdao.deny(reqId);
+            request.getRequestDispatcher("managerPage.html").include(request, response);
+            out.println("<h3>Request Denied</h3>");
         }
-        out.println("<p>All selected reimbursement request resolved</p>");
-        request.getRequestDispatcher("managerNav.html").include(request, response);
     }
 
 }

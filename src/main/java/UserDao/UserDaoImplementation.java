@@ -47,6 +47,48 @@ public class UserDaoImplementation implements UserDao{
     }
 
     @Override
+    public Reimbursement getReimbursementById(int id) {
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // open the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction() ;
+        // Perform Query
+        Reimbursement reimbursement = session.createQuery("from UserDao.Reimbursement where id = \"" + id + "\"" , Reimbursement.class).getSingleResult();
+
+        t.commit();
+
+        return reimbursement;
+    }
+
+    @Override
+    public List<Reimbursement> getAllReimbursement() {
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // open the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction() ;
+        // Perform Query
+        List<Reimbursement> reimbursements = session.createQuery("from UserDao.Reimbursement" , Reimbursement.class).list();
+        t.commit();
+
+
+
+        return reimbursements;
+    }
+
+
+    @Override
     public User viewProfile(String username) {
         User foundUser = new User();
         // create a configuration object
@@ -67,7 +109,7 @@ public class UserDaoImplementation implements UserDao{
         foundUser.setEmail(users.get(0).getEmail());
         foundUser.setUsername(username);
         foundUser.setPassword(users.get(0).getPassword());
-        foundUser.setType(users.get(0).isType());
+        foundUser.setType(users.get(0).getType());
 
         return foundUser;
     }
@@ -94,7 +136,7 @@ public class UserDaoImplementation implements UserDao{
             foundUser.setEmail(users.get(0).getEmail());
             foundUser.setUsername(username);
             foundUser.setPassword(password);
-            foundUser.setType(users.get(0).isType());
+            foundUser.setType(users.get(0).getType());
         }catch (Exception e){
             System.out.println("Bad Credentials");
         }

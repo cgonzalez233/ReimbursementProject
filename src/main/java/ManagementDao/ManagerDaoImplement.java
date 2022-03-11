@@ -29,7 +29,7 @@ public class ManagerDaoImplement implements IManagerDao{
 
         t.commit();
 
-        if((currentUser.isType())){
+        if((currentUser.getType() == 1)){
             return currentUser;
         }
 
@@ -43,11 +43,40 @@ public class ManagerDaoImplement implements IManagerDao{
 
     @Override
     public void approve(int id) {
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // open the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction() ;
 
+        Reimbursement req = session.get(Reimbursement.class, id);
+        req.setStatus("Approved");
+        session.saveOrUpdate(req);
+        t.commit();
     }
 
     @Override
     public void deny(int id) {
+        // create a configuration object
+        org.hibernate.cfg.Configuration config = new Configuration();
+        // read the Configuration and load in the object
+        config.configure("hibernate.cfg.xml");
+        // create Session factory
+        SessionFactory factory = config.buildSessionFactory();
+        // open the session
+        Session session = factory.openSession();
+        // begin transaction
+        Transaction t = session.beginTransaction() ;
+
+        Reimbursement req = session.get(Reimbursement.class, id);
+        req.setStatus("Denied");
+        session.saveOrUpdate(req);
+        t.commit();
 
     }
 

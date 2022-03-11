@@ -22,7 +22,7 @@ public class ServletVEI extends HttpServlet {
         User user = userdao.viewProfile(sessionId);
         String type;
         request.getRequestDispatcher("navbar.html").include(request, response);
-        if(user.isType() == true)
+        if(user.getType() == 1)
             type = "Manager";
         else
             type = "Employee";

@@ -12,7 +12,6 @@ import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 
 public class AllEmpServlet extends HttpServlet {
@@ -21,6 +20,8 @@ public class AllEmpServlet extends HttpServlet {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+
+        out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
 
         request.getRequestDispatcher("managerNav.html").include(request, response);
 
@@ -44,10 +45,8 @@ public class AllEmpServlet extends HttpServlet {
         System.out.println(empList.size());
         UserDao userdao = UserDaoFactory.getUserDao();
 
-        Iterator itr = empList.iterator();
-        while (itr.hasNext()) {
+        for (User emp : empList) {
 
-            User emp = (User) itr.next();
             int requests = userdao.getReimbursement(emp.getUsername()).size();
             out.println("<tr><td>" + emp.getId() + "</td>");
             out.println("<td>" + emp.getName() + "</td>");
@@ -59,7 +58,6 @@ public class AllEmpServlet extends HttpServlet {
 
         out.println("</table></div>");
         t.commit();
-        session.close();
 
     }
 
