@@ -1,7 +1,5 @@
 package ManagementServlets;
 
-import ManagementDao.IManagerDao;
-import ManagementDao.ManagerDaoFactory;
 import UserDao.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -48,14 +46,13 @@ public class EmpReqServlet extends HttpServlet {
         Transaction t = session.beginTransaction();
 
         UserDao userdao = UserDaoFactory.getUserDao();
-        IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
         List<Reimbursement> reqList = userdao.getReimbursement(name);
 
         System.out.println(reqList.size());
 //        Iterator itr = reqList.iterator();
         i = 0;
         int[] idli = new int[40];
-        String stringI = "";
+        String stringI;
         for (Reimbursement req: reqList) {
             // Reimbursement req = (Reimbursement) itr.next();
             out.println("<tr><td>" + req.getId() + "</td>");

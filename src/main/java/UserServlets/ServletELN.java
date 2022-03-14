@@ -19,21 +19,21 @@ public class ServletELN extends HttpServlet {
         employee.setUsername(request.getParameter("_username"));
         employee.setPassword(request.getParameter("_password"));
         employee = userdao.Login(employee.getUsername(), employee.getPassword());
+        System.out.println(employee);
         if (employee.getName()==null){
             out.println("<p style=\"color: red\">Bad Credentials</p>");
             request.getRequestDispatcher("index.html").include(request, response);
         }else {
             HttpSession session = request.getSession(true);
             session.setAttribute("_susername",employee.getUsername());
-            if(employee.getType() == 0 || employee.getType() == 1){
-                out.println("<div><h2>Welcome " + employee.getName() + "</h2></div>");
-                request.getRequestDispatcher("navbar.html").forward(request, response);
-
+            System.out.println(employee);
+            if(employee.getType() == 0){
+                request.getRequestDispatcher("navbar.html").include(request, response);
             }
-
             else{
-                out.println("<h1>Welcome Manager</h1>");
+                request.getRequestDispatcher("managerNav.html").include(request, response);
             }
+            out.println("<div><h1>Welcome " + employee.getName() + "</h1></div>");
         }
     }
 }

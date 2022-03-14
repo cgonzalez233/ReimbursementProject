@@ -19,7 +19,6 @@ public class ServletUPE extends HttpServlet {
         HttpSession session = request.getSession(false);
         String currentUser = (String)session.getAttribute("_susername");
         User currentinfo = userdao.viewProfile(currentUser);
-        String oldSession = currentinfo.getUsername();
         if(!request.getParameter("_name").equals("")){
             currentinfo.setName(request.getParameter("_name"));
         }

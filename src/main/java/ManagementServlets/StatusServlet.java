@@ -18,8 +18,8 @@ public class StatusServlet extends HttpServlet {
         out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
 
         IManagerDao mdao = ManagerDaoFactory.getManagerDao();
-        String stringI = "";
-        String statholder = "";
+        String stringI;
+        String statholder;
         if (EmpReqServlet.i != 0) {
             for (int comb = 0; comb != EmpReqServlet.i; comb++) {
                 stringI = Integer.toString(comb);

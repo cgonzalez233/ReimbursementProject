@@ -22,7 +22,7 @@ public class ServletVRE extends HttpServlet {
         out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
 
         String currentUser = (String)session.getAttribute("_susername");
-        request.getRequestDispatcher("navbar.html").include(request, response);
+        request.getRequestDispatcher("managerNav.html").include(request, response);
         String document ="https://www.shutterstock.com/search/catfish";
         out.println("<div class=\"tableDiv\"><table border=\"1px\"><tr class=\"tableHead\"><th>RequestID</th>"+
                 "<th>Date</th><th>Reason</th>"+

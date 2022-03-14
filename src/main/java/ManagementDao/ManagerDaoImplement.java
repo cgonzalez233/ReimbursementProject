@@ -23,23 +23,27 @@ public class ManagerDaoImplement implements IManagerDao{
         // begin transaction
         Transaction t = session.beginTransaction() ;
         // Perform Query
-        User currentUser = session.createQuery("from UserDao.User where username = \"" + username + "\" AND password = \""+pass + "\"", User.class).getSingleResult();
-
-        System.out.println(currentUser);
-
-        t.commit();
-        int type = (Integer)currentUser.getType();
-
-        //if((currentUser.getType() == 1)){
+        User currentUser;
         try{
-            if(type == 1){
-                return currentUser;
-            }
+            currentUser = session.createQuery("from UserDao.User where username = \"" + username + "\" AND password = \""+pass + "\"", User.class).getSingleResult();
         }catch(Exception e){
             return null;
         }
 
-        return null;
+        System.out.println("query2");
+        System.out.println(currentUser);
+
+        t.commit();
+        int type = currentUser.getType();
+
+        //if((currentUser.getType() == 1)){
+        if(type == 1){
+            System.out.println("Hello");
+            return currentUser;
+        }else{
+            System.out.println("Hello 2");
+            return null;
+        }
     }
 
     @Override

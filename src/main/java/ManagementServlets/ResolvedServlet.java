@@ -44,7 +44,6 @@ public class ResolvedServlet extends HttpServlet {
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
 
-        UserDao userdao = UserDaoFactory.getUserDao();
         IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
         List<Reimbursement> reqList = managerdao.allResolved();
 

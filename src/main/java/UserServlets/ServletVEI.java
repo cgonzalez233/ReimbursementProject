@@ -21,11 +21,14 @@ public class ServletVEI extends HttpServlet {
         String sessionId = (String)session.getAttribute("_susername");
         User user = userdao.viewProfile(sessionId);
         String type;
-        request.getRequestDispatcher("navbar.html").include(request, response);
-        if(user.getType() == 1)
+        if(user.getType() == 1){
+            request.getRequestDispatcher("managerNav.html").include(request, response);
             type = "Manager";
-        else
+        }
+        else{
+            request.getRequestDispatcher("navbar.html").include(request, response);
             type = "Employee";
+        }
         out.println("<div><p>name: " + user.getName()+ "</p>" +
                 "<p>username: " + user.getUsername()+ "</p>" +
                 "<p>email: " + user.getEmail()+ "</p>" +

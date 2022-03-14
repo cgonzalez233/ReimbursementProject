@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ServletCRE extends HttpServlet {
-    UserDao userdao = new UserDaoImplementation();
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         UserDao userdao = new UserDaoImplementation();
         response.setContentType("text/html");

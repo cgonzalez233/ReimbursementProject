@@ -44,7 +44,6 @@ public class PendingServlet extends HttpServlet {
         Session session = factory.openSession();
         Transaction t = session.beginTransaction();
 
-        UserDao userdao = UserDaoFactory.getUserDao();
         IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
         List<Reimbursement> reqList = managerdao.allPending();
 
@@ -52,7 +51,7 @@ public class PendingServlet extends HttpServlet {
 //        Iterator itr = reqList.iterator();
         i = 0;
         int[] idli = new int[40];
-        String stringI = "";
+        String stringI;
         for (Reimbursement req: reqList) {
             // Reimbursement req = (Reimbursement) itr.next();
             out.println("<tr><td>" + req.getId() + "</td>");

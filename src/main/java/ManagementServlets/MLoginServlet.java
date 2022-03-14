@@ -20,17 +20,15 @@ public class MLoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<head><link rel=\"stylesheet\" href=\"style.css\"></head>\n");
 
-        User manager = new User();
+        User manager;
         String uname = request.getParameter("username");
         String pass = request.getParameter("password");
 
 
-        if(uname == "" || pass == ""){
-            out.println("<p style=\"color: red\">Please Enter A Valid Login</p>");
-            request.getRequestDispatcher("index.html").include(request, response);
+        if(uname.equals("") || pass.equals("")){
+            manager = null;
         }else{
             manager = managerDao.mLogin(uname, pass);
-            System.out.println(manager);
         }
 
         if (manager==null){
