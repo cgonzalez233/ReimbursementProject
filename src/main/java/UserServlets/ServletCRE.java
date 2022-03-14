@@ -28,7 +28,7 @@ public class ServletCRE extends HttpServlet {
 
         //Fill reimbursement to be passed
         reimbursement.setReason(request.getParameter("_reason"));
-        reimbursement.setStatus("");
+        reimbursement.setStatus("Pending");
         double amount = Double.parseDouble(request.getParameter("_amount"));
         reimbursement.setAmount(amount);
         reimbursement.setRequester(currentUser);

@@ -111,6 +111,14 @@
     <url-pattern>/ManagementServlets.ResolvedServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>ManagementServlets.NewEmpServlet</servlet-name>
+    <servlet-class>ManagementServlets.NewEmpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagementServlets.NewEmpServlet</servlet-name>
+    <url-pattern>/ManagementServlets.NewEmpServlet</url-pattern>
+  </servlet-mapping>
 
 
 

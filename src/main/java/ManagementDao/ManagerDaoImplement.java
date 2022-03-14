@@ -28,9 +28,15 @@ public class ManagerDaoImplement implements IManagerDao{
         System.out.println(currentUser);
 
         t.commit();
+        int type = (Integer)currentUser.getType();
 
-        if((currentUser.getType() == 1)){
-            return currentUser;
+        //if((currentUser.getType() == 1)){
+        try{
+            if(type == 1){
+                return currentUser;
+            }
+        }catch(Exception e){
+            return null;
         }
 
         return null;
@@ -127,7 +133,6 @@ public class ManagerDaoImplement implements IManagerDao{
     public List<User> allEmp() {
         return null;
     }
-
     @Override
     public void updateRequest(String newStatus, int id) {
         // create a configuration object

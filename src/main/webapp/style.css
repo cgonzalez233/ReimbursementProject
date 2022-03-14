@@ -20,6 +20,9 @@ div{
 .tableDiv{
     width: 600px;
     height: auto;
+    padding-top: 30px;
+    padding-left: 30px;
+
 }
 
 #subBtn{
@@ -51,7 +54,7 @@ a{
 }
 h1, h2{
     padding: 30px;
-    padding-bottom: -20px;
+    margin-bottom: -25px;
 }
 
 .welcome{
@@ -62,9 +65,13 @@ h3{
     text-align: center;
 }
 
+#mName{
+    margin-bottom: -75px;
+}
+
 ul{
     list-style-type: none;
-    margin-top: -25px;
+    margin-top: 65px;
 }
 
 li{
@@ -99,4 +106,9 @@ th{
 }
 tr:nth-child(even){
     background-color: #ccc;
+}
+
+#newDiv{
+    height: auto;
+    padding-bottom: 20px;
 }

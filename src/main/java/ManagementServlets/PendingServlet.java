@@ -1,5 +1,7 @@
 package ManagementServlets;
 
+import ManagementDao.IManagerDao;
+import ManagementDao.ManagerDaoFactory;
 import UserDao.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +17,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class PendingServlet extends HttpServlet {
-
+    public static int i;
+    public static int[] idList = new int[40];
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -34,7 +37,7 @@ public class PendingServlet extends HttpServlet {
                 "            <th>Status</th>\n" +
                 "            <th>Approve/Deny</th>\n" +
                 "        </tr>\n");
-
+        out.println("<form action =\"ManagementServlets.StatusServlet\" method=\"post\">");
         Configuration config = new Configuration();
         config.configure("hibernate.cfg.xml");
         SessionFactory factory = config.buildSessionFactory();
@@ -42,30 +45,35 @@ public class PendingServlet extends HttpServlet {
         Transaction t = session.beginTransaction();
 
         UserDao userdao = UserDaoFactory.getUserDao();
-        List<Reimbursement> reqList = userdao.getAllReimbursement();
+        IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
+        List<Reimbursement> reqList = managerdao.allPending();
 
         System.out.println(reqList.size());
-
-        for (Reimbursement req : reqList) {
-            System.out.println(req.getStatus());
-
-            if(req.getStatus().equals("")){
-                System.out.println("Hello from if");
-                out.println("<tr><td>" + req.getId() + "</td>");
-                out.println("<td>" + req.getAmount() + "</td>");
-                out.println("<td>" + req.getDate() + "</td>");
-                out.println("<td>" + req.getReason() + "</td>");
-                out.println("<td>" + req.getRequester() + "</td>");
-                out.println("<td>" + req.getStatus() + "</td>");
-                out.println("<td><form action=\"ManagementServlets.StatusServlet?a=" + req.getId() + "\" method=\"post\">" +
-                        "    <input type=\"submit\" name=\"button1\" value=\"Approve\" />" +
-                        "    <input type=\"submit\" name=\"button2\" value=\"Deny\" /></form></td>");
-            }
-
+//        Iterator itr = reqList.iterator();
+        i = 0;
+        int[] idli = new int[40];
+        String stringI = "";
+        for (Reimbursement req: reqList) {
+            // Reimbursement req = (Reimbursement) itr.next();
+            out.println("<tr><td>" + req.getId() + "</td>");
+            out.println("<td>" + req.getAmount() + "</td>");
+            out.println("<td>" + req.getDate() + "</td>");
+            out.println("<td>" + req.getReason() + "</td>");
+            out.println("<td>" + req.getRequester() + "</td>");
+            out.println("<td>" + req.getStatus() + "</td>");
+            stringI = Integer.toString(i);
+            out.println("<td>" +
+                    "    Approve<input type=\"radio\" name=\"approveDeny"+stringI+"\" value=\"Approve\">" +
+                    "    Deny<input type=\"radio\" name=\"approveDeny" +stringI+"\" value=\"Deny\"></td></tr>");
+//            idList[i] = req.getId();
+            idli[i] = req.getId();
+            i++;
         }
+        idList = idli;
+        out.println("</table><input type=\"submit\" value = \"submit\"></form></div>");
 
-        out.println("</table></div>");
         t.commit();
+        session.close();
 
 
     }

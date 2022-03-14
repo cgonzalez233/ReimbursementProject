@@ -1,5 +1,7 @@
 package ManagementServlets;
 
+import ManagementDao.IManagerDao;
+import ManagementDao.ManagerDaoFactory;
 import UserDao.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +18,8 @@ import java.util.List;
 
 public class ResolvedServlet extends HttpServlet {
 
-
+    public static int i;
+    public static int[] idList = new int[40];
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -25,7 +28,7 @@ public class ResolvedServlet extends HttpServlet {
 
         request.getRequestDispatcher("managerNav.html").include(request, response);
 
-        out.println("<div class=\"tableDiv\"><h3>Resolved Reimbursements</h3><table border=1px>\n" +
+        out.println("<div class=\"tableDiv\" style='width: fit-content; padding: 10px;'><h3>Resolved Reimbursements</h3><table border=1px>\n" +
                 "        <tr class=\"tableHead\">\n" +
                 "            <th>Id</th>\n" +
                 "            <th>Amount</th>\n" +
@@ -33,7 +36,6 @@ public class ResolvedServlet extends HttpServlet {
                 "            <th>Reason</th>\n" +
                 "            <th>Requester</th>\n" +
                 "            <th>Status</th>\n" +
-                "            <th>Approve/Deny</th>\n" +
                 "        </tr>\n");
 
         Configuration config = new Configuration();
@@ -43,28 +45,24 @@ public class ResolvedServlet extends HttpServlet {
         Transaction t = session.beginTransaction();
 
         UserDao userdao = UserDaoFactory.getUserDao();
-        List<Reimbursement> reqList = userdao.getAllReimbursement();
+        IManagerDao managerdao = ManagerDaoFactory.getManagerDao();
+        List<Reimbursement> reqList = managerdao.allResolved();
 
         System.out.println(reqList.size());
-
-        for (Reimbursement req : reqList) {
-            System.out.println(req.getStatus());
-
-            if (!req.getStatus().equals("")) {
-                System.out.println("Hello from if");
-                out.println("<tr><td>" + req.getId() + "</td>");
-                out.println("<td>" + req.getAmount() + "</td>");
-                out.println("<td>" + req.getDate() + "</td>");
-                out.println("<td>" + req.getReason() + "</td>");
-                out.println("<td>" + req.getRequester() + "</td>");
-                out.println("<td>" + req.getStatus() + "</td>");
-            }
-
+        for (Reimbursement req: reqList) {
+            out.println("<tr><td>" + req.getId() + "</td>");
+            out.println("<td>" + req.getAmount() + "</td>");
+            out.println("<td>" + req.getDate() + "</td>");
+            out.println("<td>" + req.getReason() + "</td>");
+            out.println("<td>" + req.getRequester() + "</td>");
+            out.println("<td>" + req.getStatus() + "</td>");
         }
-
         out.println("</table></div>");
+
         t.commit();
+        session.close();
 
 
     }
+
 }

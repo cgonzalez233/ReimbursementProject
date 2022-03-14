@@ -30,7 +30,8 @@ public class ServletVEI extends HttpServlet {
                 "<p>username: " + user.getUsername()+ "</p>" +
                 "<p>email: " + user.getEmail()+ "</p>" +
                 "<p>password: " + user.getPassword()+ "</p>" +
-                "<p>Status: " + type+ "</p></div>");
-        out.println("<a href=\"updateUser.html\">Update information</a>");
+                "<p>Status: " + type+ "</p> " +
+                " <a href=\"updateUser.html\">Update information</a></div>");
+
     }
 }
