@@ -9,7 +9,7 @@
   intuitive operations and controls
 #Geting Started
   1.) clone the git repository
-  2.) edit the hibernate.config file to match fit your environment
+  2.) edit the hibernate.config file to fit your environment
   3.) If not already done add tomcat to your configurations
   4.) run the application
 #Contributers
