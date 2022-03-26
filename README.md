@@ -1,10 +1,11 @@
 # ReimbursementProject
-  This project if a mangement sitem that allows verified employees of company x to file new reimbursements, and Financial managers to approved/deny request,
-  view request, and view employees.
+  This project is a reimbusement mangement system that allows verified employees of company x to file new reimbursements, and Financial managers to approved/deny        
+  request,view request, and view employees.
 #Technologies Used
   Servlets- 5.0v
   Tomcat- 8.5.77v
   Hibernate- 5.6.0v
+  JDBC
 #Features
   intuitive operations and controls
 #Geting Started
