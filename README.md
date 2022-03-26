@@ -1,4 +1,3 @@
-
 # Reimbursement Project
 This project is a management system that allows employees to create reimbursement requests. Managers can then login and accept or deny the request. Each request must have a reason and an amount requested. 
 
